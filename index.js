@@ -191,7 +191,27 @@ function playaud() {
 function keatas() {
   window.scrollTo(0, 0);
 }
+function disableScroll() {
+  // Prevent scroll on touch devices
+  document.addEventListener(
+    "touchmove",
+    function (event) {
+      event.preventDefault();
+    },
+    { passive: false }
+  );
+
+  // Prevent scroll on mouse wheel
+  document.addEventListener(
+    "wheel",
+    function (event) {
+      event.preventDefault();
+    },
+    { passive: false }
+  );
+}
 window.addEventListener("load", (event) => {
+  disableScroll();
   window.scrollTo(0, 0);
   setTimeout(keatas, 500);
 
